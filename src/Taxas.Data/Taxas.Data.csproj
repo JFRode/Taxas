@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Taxas.Application\Taxas.Application.csproj" />
+    <ProjectReference Include="..\Taxas.Domain\Taxas.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SDK">
+      <HintPath>..\..\..\SDK\SDK\bin\Debug\netcoreapp3.1\SDK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
