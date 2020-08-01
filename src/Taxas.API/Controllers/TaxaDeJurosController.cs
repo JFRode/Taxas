@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using Taxas.Application.Interfaces.Services;
 namespace Taxas.API.Controllers
 {
     [Route("taxaJuros")]
+    [Authorize()]
     public class TaxaDeJurosController : Controller
     {
         private readonly ITaxaDeJurosService _taxaDeJurosService;
