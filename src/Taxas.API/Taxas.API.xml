@@ -4,5 +4,18 @@
         <name>Taxas.API</name>
     </assembly>
     <members>
+        <member name="M:Taxas.API.Controllers.TaxaDeJurosController.GetAsync(System.Threading.CancellationToken)">
+            <summary>
+            Recupera valor da taxa de juros.
+            </summary>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Taxas.API.Controllers.TokenController.RequestToken(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Solicita um token novo através da verificação da chave informada.
+            </summary>
+            <param name="chave"></param>
+            <param name="cancellationToken"></param>
+        </member>
     </members>
 </doc>

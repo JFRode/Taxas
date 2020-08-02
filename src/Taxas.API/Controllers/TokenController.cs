@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using SDK.KeyVault;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -35,7 +36,7 @@ namespace Taxas.API.Controllers
                     new Claim(ClaimTypes.SerialNumber, chave)
                 };
 
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthenticationKeys.TaxasApi));
                 var credential = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var token = new JwtSecurityToken(
                     issuer: "TaxasAPI",
@@ -56,7 +57,7 @@ namespace Taxas.API.Controllers
         private async Task<bool> ValidaChave(string chave, CancellationToken cancellationToken) =>
             await Task.Run(() =>
             {
-                return chave == _configuration["SecurityKey"];
+                return chave == AuthenticationKeys.TaxasApi;
             }, cancellationToken);
     }
 }
