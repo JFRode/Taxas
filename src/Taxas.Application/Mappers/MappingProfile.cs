@@ -6,9 +6,7 @@ namespace Taxas.Application.Mappers
 {
     public class MappingProfile : Profile
     {
-        public MappingProfile()
-        {
+        public MappingProfile() =>
             CreateMap<TaxaDeJuros, TaxaDeJurosDto>().ReverseMap();
-        }
     }
 }

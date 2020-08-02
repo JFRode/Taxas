@@ -13,22 +13,16 @@ namespace Taxas.Data
         private ITaxaDeJurosRepository _taxaDeJurosRepository;
         private bool _disposed;
 
-        public UnitOfWork(TaxasDbContext taxasDbContext)
-        {
+        public UnitOfWork(TaxasDbContext taxasDbContext) =>
             _taxasDbContext = taxasDbContext;
-        }
 
         public ITaxaDeJurosRepository TaxaDeJurosRepository => _taxaDeJurosRepository ??= new TaxaDeJurosRepository(_taxasDbContext);
 
-        public void SaveChanges()
-        {
+        public void SaveChanges() =>
             _taxasDbContext.SaveChanges();
-        }
 
-        public Task SaveChangesAsync()
-        {
-            return _taxasDbContext.SaveChangesAsync();
-        }
+        public Task SaveChangesAsync() =>
+            _taxasDbContext.SaveChangesAsync();
 
         public void Dispose()
         {

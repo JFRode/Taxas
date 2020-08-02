@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Taxas.Data.Context;
 using Taxas.Domain.TaxaDeJuros.Builder;
 
@@ -10,10 +8,8 @@ namespace Taxas.Data.Seed
     {
         private readonly TaxasDbContext _taxasDbContext;
 
-        public TaxaDeJurosSeed(TaxasDbContext taxasDbContext)
-        {
+        public TaxaDeJurosSeed(TaxasDbContext taxasDbContext) =>
             _taxasDbContext = taxasDbContext;
-        }
 
         public void Executar()
         {

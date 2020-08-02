@@ -6,24 +6,16 @@ namespace Taxas.Domain.TaxaDeJuros.Builder
     {
         private readonly TaxaDeJuros _taxaDeJuros;
 
-        public TaxaDeJurosBuilder()
-        {
+        public TaxaDeJurosBuilder() =>
             _taxaDeJuros = new TaxaDeJuros();
-        }
 
-        public TaxaDeJuros Build()
-        {
-            return _taxaDeJuros;
-        }
+        public TaxaDeJuros Build() =>
+            _taxaDeJuros;
 
-        public void WithId(Guid id)
-        {
+        public void WithId(Guid id) =>
             _taxaDeJuros.Id = id;
-        }
 
-        public void WithPercentual(decimal percentual)
-        {
+        public void WithPercentual(decimal percentual) =>
             _taxaDeJuros.Percentual = percentual;
-        }
     }
 }
