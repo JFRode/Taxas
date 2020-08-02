@@ -13,11 +13,13 @@ namespace Taxas.API.Controllers
     {
         private readonly ITaxaDeJurosService _taxaDeJurosService;
 
-        public TaxaDeJurosController(ITaxaDeJurosService taxaDeJurosService)
-        {
+        public TaxaDeJurosController(ITaxaDeJurosService taxaDeJurosService) =>
             _taxaDeJurosService = taxaDeJurosService;
-        }
 
+        /// <summary>
+        /// Recupera valor da taxa de juros.
+        /// </summary>
+        /// <param name="cancellationToken"></param>
         [HttpGet]
         public async Task<IActionResult> GetAsync(CancellationToken cancellationToken)
         {

@@ -16,11 +16,14 @@ namespace Taxas.API.Controllers
     {
         private readonly IConfiguration _configuration;
 
-        public TokenController(IConfiguration configuration)
-        {
+        public TokenController(IConfiguration configuration) =>
             _configuration = configuration;
-        }
 
+        /// <summary>
+        /// Solicita um token novo através da verificação da chave informada.
+        /// </summary>
+        /// <param name="chave"></param>
+        /// <param name="cancellationToken"></param>
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> RequestToken([FromBody] string chave, CancellationToken cancellationToken)
@@ -50,12 +53,10 @@ namespace Taxas.API.Controllers
             return BadRequest("Requisição inválida");
         }
 
-        private async Task<bool> ValidaChave(string chave, CancellationToken cancellationToken)
-        {
-            return await Task.Run(() =>
+        private async Task<bool> ValidaChave(string chave, CancellationToken cancellationToken) =>
+            await Task.Run(() =>
             {
                 return chave == _configuration["SecurityKey"];
             }, cancellationToken);
-        }
     }
 }
