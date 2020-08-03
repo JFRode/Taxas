@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="SDK">
-      <HintPath>..\..\..\SDK\SDK\bin\Debug\netcoreapp3.1\SDK.dll</HintPath>
-    </Reference>
+    <PackageReference Include="JFRode.SDK" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

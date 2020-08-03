@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JFRode.SDK" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.6" />
   </ItemGroup>
@@ -12,11 +13,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Taxas.Application\Taxas.Application.csproj" />
     <ProjectReference Include="..\Taxas.Domain\Taxas.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="SDK">
-      <HintPath>..\..\..\SDK\SDK\bin\Debug\netcoreapp3.1\SDK.dll</HintPath>
-    </Reference>
   </ItemGroup>
 </Project>
