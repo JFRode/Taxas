@@ -1,21 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Taxas.API.Extensions;
 using Taxas.Application;
 using Taxas.Data;
-using Taxas.Data.Seed;
+using Taxas.Data.Context;
 
 namespace Taxas.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
+        public Startup(IConfiguration configuration) =>
             Configuration = configuration;
-        }
 
         public IConfiguration Configuration { get; }
 
@@ -29,13 +28,13 @@ namespace Taxas.API
                 .AddFluentValidation();
 
             services.AddDataServices();
-            services.AddTaxasDbContext();
+            services.AddTaxasDbContext(Configuration.GetConnectionString("DefaultConnection"));
 
             services.AddSwaggerService();
             services.AddAuthenticationService();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TaxasDbContext taxasDbContext)
         {
             if (env.IsDevelopment())
             {
@@ -49,8 +48,6 @@ namespace Taxas.API
             app.UseAuthentication();
             app.UseAuthorization();
 
-            SeedDataBase(app);
-
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -61,13 +58,8 @@ namespace Taxas.API
             {
                 endpoints.MapControllers();
             });
-        }
 
-        private void SeedDataBase(IApplicationBuilder app)
-        {
-            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
-            var seed = serviceScopeFactory.ServiceProvider.GetService<ITaxaDeJurosSeed>();
-            seed.Executar();
+            taxasDbContext.Database.Migrate();
         }
     }
 }

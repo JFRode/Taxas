@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Taxas.Data.Extensions;
 using Taxas.Domain.TaxaDeJuros;
 
 namespace Taxas.Data.Context
@@ -10,5 +11,8 @@ namespace Taxas.Data.Context
         public TaxasDbContext(DbContextOptions<TaxasDbContext> options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder) =>
+            modelBuilder.Seed();
     }
 }
