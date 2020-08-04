@@ -1,6 +1,6 @@
 # Taxas
 
-### Endpoints
+### Rotas
 - /taxaJuros
 - /token
 
