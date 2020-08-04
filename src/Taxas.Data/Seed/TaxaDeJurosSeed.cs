@@ -14,11 +14,10 @@ namespace Taxas.Data.Seed
         public void Executar()
         {
             var taxaDeJurosBuilder = new TaxaDeJurosBuilder();
-            taxaDeJurosBuilder.WithId(Guid.NewGuid());
-            taxaDeJurosBuilder.WithPercentual(0.01M);
-            var taxaDeJuros = taxaDeJurosBuilder.Build();
-
-            _taxasDbContext.Add(taxaDeJuros);
+            _taxasDbContext.Add(taxaDeJurosBuilder
+                .WithId(Guid.NewGuid())
+                .WithPercentual(0.01M)
+                .Build());
             _taxasDbContext.SaveChanges();
         }
     }

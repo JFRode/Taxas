@@ -4,9 +4,9 @@ namespace Taxas.Domain.TaxaDeJuros.Builder
 {
     public interface ITaxaDeJurosBuilder
     {
-        void WithId(Guid id);
+        TaxaDeJurosBuilder WithId(Guid id);
 
-        void WithPercentual(decimal percentual);
+        TaxaDeJurosBuilder WithPercentual(decimal percentual);
 
         TaxaDeJuros Build();
     }
